@@ -1,0 +1,39 @@
+{
+  "name": "mt-dinner",
+  "version": "1.0.0",
+  "description": "美囤点餐系统",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "npm run stop; NODE_ENV=development node server/bin/www",
+    "start-pro": "NODE_ENV=production node server/bin/www",
+    "start-dev-backend": "npm run stop; NODE_ENV=development PORT=9000 pm2 start server/bin/www --name='dinnerSystem'",
+    "start-pro-backend": "NODE_ENV=production PORT=9000 pm2 restart server/bin/www",
+    "stop": "pm2 stop dinnerSystem",
+    "build-api-doc": "server/API-view/bin/apidoc -i server/routes/ -o server/public/api-doc/"
+  },
+  "author": "zhanyouwei@meitunmama.com & zhouyang@meitunmama.com",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "api-doc": "^2.0.0",
+    "body-parser": "^1.15.0",
+    "connect-rest": "^1.9.5",
+    "cookie-parser": "^1.4.1",
+    "cors": "^2.7.1",
+    "ejs": "^2.4.1",
+    "excel": "^0.1.4",
+    "excel-export": "^0.5.1",
+    "express": "^4.13.4",
+    "express-useragent": "^0.2.4",
+    "lodash": "^4.6.1",
+    "markdown": "^0.5.0",
+    "moment": "^2.12.0",
+    "mongoose": "^4.4.12",
+    "node-xlsx": "^0.6.0",
+    "nomnom": "^1.8.1",
+    "serve-favicon": "^2.3.0"
+  }
+}

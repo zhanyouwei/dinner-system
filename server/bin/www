@@ -1,0 +1,20 @@
+/**
+ * @author: Jason.占友伟 zhanyouwei@meitunmama.com
+ * Created on 16/3/21.
+ */
+var app = require('../app');
+
+var http = require('http');
+var config = require('../config/environment');
+
+var port = config.port || '9000';
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+server.listen(port, function () {
+  console.log('listening on *:' + port);
+});

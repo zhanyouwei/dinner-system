@@ -1,0 +1,20 @@
+{
+  "name": "dinner-system",
+  "version": "1.0.0",
+  "description": "点餐系统 API 文档",
+  "title": "点餐系统 API 文档",
+  "url" : "http://192.168.16.110",
+  "sampleUrl": "http://192.168.16.110",
+  "header": {
+    "title": "点餐系统 API 文档",
+    "filename": "apidoc-header.md"
+  },
+  "footer": {
+    "title": "点餐系统 API 文档,更新说明",
+    "filename": "apidoc-footer.md"
+  },
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": true
+  }
+}
