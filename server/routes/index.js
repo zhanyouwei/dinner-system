@@ -11,18 +11,6 @@ router.get('/', function (req, res, next) {
 	res.render('index', {dirname: __dirname});
 });
 
-router.post('/register', function (req, res, next) {
-	console.log(req.body);
-	res.end();
-});
-
-router.post('/login', function (req, res, next) {
-	console.log(req.body);
-	res.end();
-});
-
-
-
 router.get('/download', function (req, res, next) {
 	exportReport.exportReport(function (err) {
 		if (err) {

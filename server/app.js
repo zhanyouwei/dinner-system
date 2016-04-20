@@ -31,8 +31,8 @@ app.use('/', routes);
 //region 配置 API 路由
 //设置跨域访问
 var corsOptions = {
-	origin: ["http://localhost:9000", "http://localhost:8080", "http://localhost:3000"],
-	allowedHeaders: "Origin, Content-Type, Content-Length, Accept, X-Requested-With, Authorization, version, client-type, game, if-none-match",
+	origin: ["http://localhost:9000", "http://192.168.16.110:4000", "http://localhost:4000"],
+	allowedHeaders: "Origin, Content-Type, Content-Length, Accept, X-Requested-With",
 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
 	credentials: true
 };
@@ -44,7 +44,9 @@ app.all('*', function (req, res, next) {
 	next();
 });
 
-app.use('/', require('./routes/dinner.api.js'));
+app.use('/api', require('./routes/user.api.js'));
+app.use('/api', require('./routes/menu.api.js'));
+app.use('/api', require('./routes/order.api.js'));
 
 //endregion
 // catch 404 and forward to error handler
