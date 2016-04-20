@@ -14,14 +14,22 @@ var dishControl = require('../controller/dish.ctrl');
  * @apiGroup Menu
  *
  * @apiParam {String} name 菜单名.
+ * @apiParam {String} oper 操作员.
  *
+ * @apiSuccess {String} id 菜单id.
+ * @apiSuccess {String} name 菜单名.
  */
 router.post('/menu', function (req, res, next) {
 	menuControl.createMenu(req.body, function (err, data) {
 		if (err) {
 			next(err);
+			res.sendStatus(500);
+			res.send({code: 500, message: '服务器端错误'});
 		} else {
-			res.send(data);
+			res.send({
+				id: data._id,
+				name: data.name
+			});
 		}
 	});
 });
@@ -60,7 +68,9 @@ router.get('/menu', function (req, res, next) {
  * @apiSuccess {String} dishes.price 菜价格.
  */
 router.get('/menu/:id', function (req, res, next) {
+	console.log(req.params);
 	menuControl.findMenuById(req.params.id, function (err, data) {
+		console.log(data);
 		if (err) {
 			next(err);
 		} else {
@@ -94,14 +104,22 @@ router.delete('/menu/:id', function (req, res, next) {
  * @apiParam {String} menuId 菜单Id.
  * @apiParam {String} name 菜名.
  * @apiParam {String} price 价格.
+ * @apiParam {String} oper 操作者Id.
  *
+ * @apiSuccess {String} id 菜id.
+ * @apiSuccess {String} name 菜名.
+ * @apiSuccess {String} price 价格.
  */
 router.post('/dish', function (req, res, next) {
 	dishControl.createDish(req.body, function (err, data) {
 		if (err) {
 			next(err);
 		} else {
-			res.send(data);
+			res.send({
+				id: data._id,
+				name: data.name,
+				price: data.price
+			});
 		}
 	});
 });

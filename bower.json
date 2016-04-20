@@ -1,0 +1,23 @@
+{
+  "name": "dinner-system",
+  "description": "美囤点餐系统",
+  "main": "index.js",
+  "authors": [
+    "zhanyouwei@meitunmama.com & zhouyang@meitunmama.com"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/zhanyouwei/dinner-system",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "amazeui": "^2.6.1"
+  }
+}

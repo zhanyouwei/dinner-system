@@ -56,7 +56,7 @@ describe('user.api', function () {
 					}
 					assert(res.ok);
 					assert(res.status == 200);
-					assert(res.body.email);
+					assert(res.body.id);
 					done();
 				});
 		});

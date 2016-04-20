@@ -48,7 +48,10 @@ router.post('/login', function (req, res, next) {
 		if(err) {
 			next(err);
 		}else{
-			res.send(data);
+			res.send({
+				id:data._id,
+				name:data.name
+			});
 		}
 	});
 });

@@ -10,7 +10,8 @@ var dishControl = require('./dish.ctrl');
 
 // Schema 结构
 var menuSchema = new mongoose.Schema({
-	name: {type: String}
+	name: {type: String},
+	oper: {type: String}
 });
 
 // model
@@ -61,9 +62,9 @@ function findMenuById(id, callback) {
 		} else {
 			var menu = result;
 			dishControl.findDishByMenuId(menu._id, function (err, dishes) {
-				if(err) {
+				if (err) {
 					callback(err, null);
-				}else{
+				} else {
 					menu.dishes = dishes;
 					callback(null, menu);
 				}

@@ -11,7 +11,8 @@ var db = require('../core/db.core').db;
 var dishSchema = new mongoose.Schema({
 	menuId: {type: String},
 	name: {type: String},
-	price: {type: String}
+	price: {type: String},
+	oper: {type: String}
 });
 
 // model
@@ -22,7 +23,8 @@ function createDish(data, callback) {
 	var dish = {
 		name: data.name,
 		price: data.price,
-		menuId: data.menuId
+		menuId: data.menuId,
+		
 	};
 	dishModel.find({name: dish.name}, function (error, result) {
 		if (error) {
