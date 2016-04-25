@@ -4,10 +4,14 @@
  */
 var express = require('express');
 var router = express.Router();
+var userAgent = require('express-useragent');
 
 var exportReport = require('../controller/exportReport');
+var statistics = require('../controller/statistics.ctrl');
 
 router.get('/', function (req, res, next) {
+	var ua = userAgent.parse(req.headers['user-agent']);
+	statistics.add(ua);
 	res.render('index', {dirname: __dirname});
 });
 

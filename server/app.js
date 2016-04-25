@@ -9,9 +9,11 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var config = require('./config/environment');
+var userAgent = require('express-useragent');
 
+var config = require('./config/environment');
 var routes = require('./routes/index');
+var statistics = require('./controller/statistics.ctrl');
 
 var app = express();
 
@@ -41,6 +43,8 @@ app.options('*', cors(corsOptions), function (req, res, next) {
 });
 app.use(cors(corsOptions));
 app.all('*', function (req, res, next) {
+	var ua = userAgent.parse(req.headers['user-agent']);
+	statistics.add(ua);
 	next();
 });
 
@@ -61,20 +65,30 @@ app.use(function (req, res, next) {
 // development error handler will print stacktrace
 if (app.get('env') === 'development') {
 	app.use(function (err, req, res, next) {
-		res.render('error', {
-			message: err.message,
-			error: err
-		});
+		if (err.status === 404) {
+			res.render('error', {
+				message: err.message,
+				error: err
+			});
+		} else {
+			res.status(err.status);
+			res.send({code: err.status, message: err.message});
+		}
 	});
 }
 
 // production error handler ,no stacktraces leaked to user
 if (app.get('env') === 'production') {
 	app.use(function (err, req, res, next) {
-		res.render('error', {
-			message: err.message,
-			error: {}
-		});
+		if (err.status === 404) {
+			res.render('error', {
+				message: err.message,
+				error: {}
+			});
+		} else {
+			res.status(err.status);
+			res.send({code: err.status, message: err.message});
+		}
 	});
 }
 
