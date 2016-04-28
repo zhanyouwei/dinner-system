@@ -4,10 +4,14 @@
  */
 
 var mongoose = require('mongoose');
-var db = mongoose.createConnection('mongodb://localhost/dinner-database');
+
+var config = require('./config/environment');
+
+var db = mongoose.createConnection(
+  'mongodb://' + config.db.host + ':' + config.db.port + '/dinner-database');
 // 链接错误
 db.on('error', function (error) {
-	console.log(error);
+  console.log(error);
 });
 
 exports.db = db;

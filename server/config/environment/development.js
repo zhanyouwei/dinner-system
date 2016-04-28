@@ -7,11 +7,8 @@
 // 开发环境配置
 // ==================================
 module.exports = {
-	API_URL: {
-		baseUrl: '192.168.16.20'
-	},
-	Leancloud: {
-		APP_ID: 'cgKQGef4BPOAj9VQkGuMiwqh-gzGzoHsz',
-		APP_KEY: 'g4PUFXink8VdEAK4e3v54IHI'
+	db: {
+		host: '127.0.0.1',
+		port: '27017'
 	}
 };
