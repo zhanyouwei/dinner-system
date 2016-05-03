@@ -68,9 +68,7 @@ router.get('/menu', function (req, res, next) {
  * @apiSuccess {String} dishes.price 菜价格.
  */
 router.get('/menu/:id', function (req, res, next) {
-	console.log(req.params);
 	menuControl.findMenuById(req.params.id, function (err, data) {
-		console.log(data);
 		if (err) {
 			next(err);
 		} else {

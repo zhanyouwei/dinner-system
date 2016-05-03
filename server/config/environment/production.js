@@ -9,5 +9,9 @@
 module.exports = {
   API_URL:{
     baseUrl:'m.meitun.com'
+  },
+  Leancloud: {
+    APP_ID: 'cgKQGef4BPOAj9VQkGuMiwqh-gzGzoHsz',
+    APP_KEY: 'g4PUFXink8VdEAK4e3v54IHI'
   }
 };

@@ -36,3 +36,4 @@ node_modules/
 server/public/api-doc/
 server/public/report/
 app/bower_components
+mobile/node_modules/
